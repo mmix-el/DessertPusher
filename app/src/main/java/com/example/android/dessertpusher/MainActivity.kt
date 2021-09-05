@@ -85,6 +85,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
             revenue = savedInstanceState.getInt(KEY_REVENUE)
             dessertsSold = savedInstanceState.getInt(KEY_DESSERT_SOLD)
             dessertTimer.secondsCount = savedInstanceState.getInt(KEY_TIME)
+            showCurrentDessert()
         }
 
         // Set the TextViews to the right values
@@ -201,5 +202,10 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
         outState.putInt(KEY_DESSERT_SOLD, dessertsSold)
         outState.putInt(KEY_TIME, dessertTimer.secondsCount)
         Timber.i("onSaveInstanceState called")
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        Timber.i("onRestoreInstanceState called")
     }
 }
